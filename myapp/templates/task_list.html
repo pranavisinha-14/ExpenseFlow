@@ -1,0 +1,290 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TaskFlow - To-Do Manager</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            TaskFlow
+        </div>
+
+        <div class="nav-links">
+            <a href="{% url 'task_list' %}">Dashboard</a>
+            <a href="{% url 'add_task' %}">Add Task</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div>
+                <p class="welcome">WELCOME BACK 👋</p>
+
+                <h1>My Tasks</h1>
+
+                <p class="subtitle">
+                    Organize your work and stay productive.
+                </p>
+            </div>
+
+            <a class="add-button" href="{% url 'add_task' %}">
+                + Add New Task
+            </a>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+                <div>
+                    <h3>{{ total_tasks }}</h3>
+                    <p>Total Tasks</p>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+                    <h3>{{ completed_tasks }}</h3>
+                    <p>Completed</p>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+                    <h3>{{ pending_tasks }}</h3>
+                    <p>Pending</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Progress -->
+        <div class="progress-card">
+
+            <div class="progress-header">
+
+                <div>
+                    <h2>Overall Progress</h2>
+
+                    <p>
+                        Keep going! You're doing great.
+                    </p>
+                </div>
+
+                <strong>
+                    {{ completion_percentage }}%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     data-progress="{{ completion_percentage }}">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tasks Heading -->
+        <div class="section-heading">
+
+            <h2>Your Tasks</h2>
+
+            <span>
+                {{ total_tasks }} task{{ total_tasks|pluralize }}
+            </span>
+
+        </div>
+
+
+        <!-- Task List -->
+        <div class="task-list">
+
+            {% for task in tasks %}
+
+            <div class="task-card {% if task.completed %}task-completed{% endif %}">
+
+                <!-- Task Header -->
+                <div class="task-top">
+
+                    <div>
+
+                        <h2>
+                            {{ task.title }}
+                        </h2>
+
+
+                        {% if task.completed %}
+
+                        <span class="status completed-status">
+                            ✓ Completed
+                        </span>
+
+                        {% else %}
+
+                        <span class="status pending-status">
+                            ● Pending
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+                <p class="description">
+                    {{ task.description }}
+                </p>
+
+
+                <!-- Task Footer -->
+                <div class="task-footer">
+
+                    <span class="created">
+                        🕒 Created: {{ task.created_at }}
+                    </span>
+
+
+                    <!-- Buttons -->
+                    <div class="buttons">
+
+                        {% if task.completed %}
+
+                        <!-- Undo Button -->
+                        <a class="button undo"
+                           href="{% url 'complete_task' task.id %}">
+                            ↶ Undo
+                        </a>
+
+                        {% else %}
+
+                        <!-- Complete Button -->
+                        <a class="button complete"
+                           href="{% url 'complete_task' task.id %}">
+                            ✓ Complete
+                        </a>
+
+                        {% endif %}
+
+
+                        <!-- Edit Button -->
+                        <a class="button edit"
+                           href="{% url 'edit_task' task.id %}">
+                            ✎ Edit
+                        </a>
+
+
+                        <!-- Delete Button -->
+                        <a class="button delete"
+                           href="{% url 'delete_task' task.id %}"
+                           onclick="return confirm('Are you sure you want to delete this task?');">
+                            🗑 Delete
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <!-- Empty State -->
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ✓
+                </div>
+
+                <h2>No tasks yet!</h2>
+
+                <p>
+                    Start organizing your day by adding your first task.
+                </p>
+
+                <a class="add-button" href="{% url 'add_task' %}">
+                    + Create Your First Task
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            TaskFlow • Built with Django
+        </p>
+
+    </footer>
+
+
+    <!-- Progress Bar Script -->
+    <script>
+
+        const progressBar =
+            document.querySelector('.progress-fill');
+
+        if (progressBar) {
+
+            progressBar.style.width =
+                progressBar.dataset.progress + '%';
+
+        }
+
+    </script>
+
+</body>
+
+</html>

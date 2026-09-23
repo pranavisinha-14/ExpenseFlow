@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Set Monthly Budget - ExpenseFlow</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #fff5ef;
+
+            color: #3d3d3d;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #e9967a;
+
+            padding: 18px 6%;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 26px;
+
+            font-weight: bold;
+        }
+
+
+        .navbar-right {
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+
+            max-width: 700px;
+
+            margin: 60px auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .page-icon {
+            font-size: 55px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .page-header h1 {
+            margin: 0;
+
+            color: #4b3b35;
+
+            font-size: 38px;
+        }
+
+
+        .page-header p {
+            color: #8b7770;
+
+            margin-top: 10px;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .form-card {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 7px 25px rgba(120, 80, 60, 0.12);
+        }
+
+
+        /* =========================
+           CURRENT MONTH
+        ========================= */
+
+        .month-info {
+            background: #fff1ea;
+
+            border-left: 5px solid #e9967a;
+
+            padding: 15px 18px;
+
+            border-radius: 8px;
+
+            margin-bottom: 25px;
+
+            color: #704b3d;
+
+            font-size: 14px;
+        }
+
+
+        .month-info strong {
+            color: #c9674e;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        form p {
+            margin-bottom: 22px;
+        }
+
+
+        label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+            color: #4b3b35;
+        }
+
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #e0c8bd;
+
+            border-radius: 9px;
+
+            font-size: 15px;
+
+            font-family: Arial, sans-serif;
+
+            background: #fffaf7;
+        }
+
+
+        input:focus,
+        select:focus {
+            outline: none;
+
+            border-color: #e9967a;
+
+            box-shadow:
+                0 0 0 3px rgba(233, 150, 122, 0.15);
+        }
+
+
+        .helptext {
+            display: block;
+
+            margin-top: 6px;
+
+            color: #999;
+
+            font-size: 12px;
+        }
+
+
+        .errorlist {
+            color: #c94c45;
+
+            font-size: 13px;
+
+            padding-left: 20px;
+        }
+
+
+        /* =========================
+           BUDGET TIP
+        ========================= */
+
+        .tip {
+            background: #fffaf7;
+
+            border: 1px solid #f0ddd4;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            margin-top: 25px;
+
+            color: #8b7770;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .tip strong {
+            color: #c9674e;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+
+        .save-btn {
+            background: #d9795f;
+
+            color: white;
+
+            border: none;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .save-btn:hover {
+            background: #c9674e;
+        }
+
+
+        .back-btn {
+            background: #f3c09f;
+
+            color: #704b3d;
+
+            text-decoration: none;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        .back-btn:hover {
+            background: #eab08d;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+
+            background: #f6d8cb;
+
+            color: #765c53;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .navbar-right {
+                display: none;
+            }
+
+
+            .container {
+                width: 92%;
+
+                margin-top: 35px;
+            }
+
+
+            .form-card {
+                padding: 25px;
+            }
+
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+
+            .buttons {
+                flex-direction: column;
+            }
+
+
+            .save-btn,
+            .back-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            💰 ExpenseFlow
+        </div>
+
+
+        <div class="navbar-right">
+            Personal Finance Manager
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+
+            <div class="page-icon">
+                🎯
+            </div>
+
+
+            <h1>
+                Set Monthly Budget
+            </h1>
+
+
+            <p>
+                Take control of your monthly spending.
+            </p>
+
+
+        </div>
+
+
+        <!-- FORM CARD -->
+
+        <div class="form-card">
+
+
+            <!-- CURRENT MONTH -->
+
+            <div class="month-info">
+
+                📅 Current month:
+
+                <strong>
+                    {{ current_month }}
+                </strong>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                {{ form.as_p }}
+
+
+                <!-- TIP -->
+
+                <div class="tip">
+
+                    💡 <strong>Budget Tip:</strong>
+
+                    Set a realistic monthly spending limit.
+
+                    ExpenseFlow will automatically calculate
+
+                    how much of your budget you have used.
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="buttons">
+
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+
+                        💾 Save Budget
+
+                    </button>
+
+
+                    <a
+                        href="{% url 'expense_list' %}"
+                        class="back-btn"
+                    >
+
+                        ← Back to Dashboard
+
+                    </a>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        ExpenseFlow • Built with Django
+
+    </footer>
+
+
+</body>
+
+</html>

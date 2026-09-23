@@ -1,0 +1,494 @@
+/* ==============================
+   TASKFLOW - PEACH THEME
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff4ee;
+    color: #493b35;
+}
+
+
+/* ==============================
+   NAVIGATION BAR
+   ============================== */
+
+.navbar {
+    background: #e8a68f;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(120, 70, 50, 0.15);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #fff0e8;
+}
+
+
+/* ==============================
+   MAIN CONTAINER
+   ============================== */
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 0 60px;
+}
+
+
+/* ==============================
+   HEADER
+   ============================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.welcome {
+    margin: 0 0 8px;
+    color: #c77b63;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 48px;
+    color: #493b35;
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: #8a7167;
+    font-size: 18px;
+}
+
+
+/* ==============================
+   BUTTONS
+   ============================== */
+
+.add-button {
+    display: inline-block;
+    background: #d88970;
+    color: white;
+    text-decoration: none;
+    padding: 15px 24px;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.add-button:hover {
+    background: #c8755c;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   STATISTICS
+   ============================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 18px rgba(120, 70, 50, 0.10);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #fde3d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 30px;
+    color: #b9674f;
+}
+
+.stat-card p {
+    margin: 5px 0 0;
+    color: #8a7167;
+    font-size: 16px;
+}
+
+
+/* ==============================
+   PROGRESS CARD
+   ============================== */
+
+.progress-card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 18px rgba(120, 70, 50, 0.10);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.progress-header h2 {
+    margin: 0;
+    color: #493b35;
+}
+
+.progress-header p {
+    margin: 6px 0 0;
+    color: #9a8177;
+}
+
+.progress-header strong {
+    font-size: 26px;
+    color: #d27c61;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 13px;
+    background: #f5ddd3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #e39a80;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+
+/* ==============================
+   TASK SECTION
+   ============================== */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 27px;
+    color: #493b35;
+}
+
+.section-heading span {
+    color: #9a8177;
+}
+
+
+/* ==============================
+   TASK CARDS
+   ============================== */
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.task-card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(120, 70, 50, 0.10);
+    border-left: 5px solid #e8a68f;
+    transition: 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(120, 70, 50, 0.15);
+}
+
+.task-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.task-top h2 {
+    margin: 0 0 10px;
+    color: #493b35;
+    font-size: 23px;
+}
+
+
+/* ==============================
+   STATUS BADGES
+   ============================== */
+
+.status {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.pending-status {
+    background: #fff0c9;
+    color: #a87516;
+}
+
+.completed-status {
+    background: #d9f1df;
+    color: #39804a;
+}
+
+
+/* ==============================
+   DESCRIPTION
+   ============================== */
+
+.description {
+    color: #6f5b53;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 15px 0 20px;
+}
+
+
+/* ==============================
+   TASK FOOTER
+   ============================== */
+
+.task-footer {
+    border-top: 1px solid #f0e1db;
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.created {
+    color: #a08b82;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   TASK BUTTONS
+   ============================== */
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.complete {
+    background: #d88970;
+}
+
+.complete:hover {
+    background: #c8755c;
+}
+
+.undo {
+    background: #9b8c86;
+}
+
+.undo:hover {
+    background: #81736d;
+}
+
+.edit {
+    background: #e4a35f;
+}
+
+.edit:hover {
+    background: #cf8d49;
+}
+
+.delete {
+    background: #b85c5c;
+}
+
+.delete:hover {
+    background: #9f4949;
+}
+
+
+/* ==============================
+   COMPLETED TASK
+   ============================== */
+
+.task-completed {
+    border-left-color: #9bc6a2;
+    background: #fffdfc;
+}
+
+.task-completed .task-top h2 {
+    text-decoration: line-through;
+    color: #958982;
+}
+
+.task-completed .description {
+    color: #a39792;
+}
+
+
+/* ==============================
+   EMPTY STATE
+   ============================== */
+
+.empty-state {
+    background: #ffffff;
+    padding: 55px 30px;
+    text-align: center;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(120, 70, 50, 0.10);
+}
+
+.empty-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #fde3d7;
+    color: #d88970;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.empty-state h2 {
+    color: #493b35;
+}
+
+.empty-state p {
+    color: #8a7167;
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #f5ddd3;
+    color: #806b62;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* ==============================
+   MOBILE RESPONSIVE
+   ============================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .header h1 {
+        font-size: 38px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .task-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .button {
+        flex: 1;
+        text-align: center;
+    }
+}

@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% if edit_mode %}
+            Edit Task
+        {% else %}
+            Add New Task
+        {% endif %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+            {% if edit_mode %}
+                Edit Task
+            {% else %}
+                Add New Task
+            {% endif %}
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                {% if edit_mode %}
+                    Update Task
+                {% else %}
+                    Add Task
+                {% endif %}
+            </button>
+
+        </form>
+
+        <br>
+
+        <a class="back-button" href="{% url 'task_list' %}">
+            ← Back to Tasks
+        </a>
+
+    </div>
+
+</body>
+</html>
