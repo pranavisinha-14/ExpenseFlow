@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: expenseflow
+    runtime: python
+    buildCommand: "bash build.sh"
+    startCommand: "gunicorn demo.wsgi:application"
